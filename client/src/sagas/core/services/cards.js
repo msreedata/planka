@@ -10,7 +10,7 @@ import { createLocalId } from '../../../utils/local-id';
 export function* createSingleCard(listId, data) {
         const { boardId } = yield select(selectors.selectListById, listId);
         const nextData = {
-            ...element,
+            ...data,
             listId,
             position: yield select(selectors.selectNextCardPosition, listId),
         };
@@ -41,7 +41,7 @@ export function* createCard(listId, data) {
       toString().
       split('\n')).
       forEach((element) => {
-      call(createSingleCard(listId, data));
+      call(createSingleCard(listId, element));
     });
 }
 
