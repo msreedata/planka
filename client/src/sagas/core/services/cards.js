@@ -37,8 +37,11 @@ export function* createSingleCard(listId, data) {
 }
 
 export function* createCard(listId, data) {
-    (data.toString().split('\n')).forEach(element => {
-      createSingleCard(listId, data)
+    yield (data.
+      toString().
+      split('\n')).
+      forEach((element) => {
+      call(createSingleCard(listId, data));
     });
 }
 
